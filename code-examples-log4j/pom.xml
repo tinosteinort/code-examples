@@ -2,49 +2,17 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>code-examples</groupId>
+    <parent>
+        <groupId>code-examples</groupId>
+        <artifactId>code-examples-launch</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 	<artifactId>code-examples-log4j</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	
     <name>${project.artifactId}-${project.version}</name>
 	<description>Beispiel zur Verwendung von Log4J</description>
 	
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <version.log4j>2.0.1</version.log4j>
-    </properties>
-    
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-api</artifactId>
-				<version>${version.log4j}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-core</artifactId>
-				<version>${version.log4j}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-    
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
