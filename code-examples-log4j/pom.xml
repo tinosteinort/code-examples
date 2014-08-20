@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
     <parent>
+        <relativePath>../code-examples-launch</relativePath>
         <groupId>code-examples</groupId>
         <artifactId>code-examples-launch</artifactId>
         <version>0.0.1-SNAPSHOT</version>
