@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>code-examples</groupId>
+	<artifactId>javafx-maven-example</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>JavaFX With Maven Example</name>
+
+	<!--
+	   Configuration of resources and exec-plugin from:
+	   
+	       http://www.oracle.com/technetwork/articles/java/javafx-productivity-2345000.html
+    -->
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<version.java>1.8</version.java>
+
+		<version.maven-compiler-plugin>3.3</version.maven-compiler-plugin>
+		<version.exec-maven-plugin>1.2.1</version.exec-maven-plugin>
+	</properties>
+
+	<build>
+
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.fxml</include>
+					<include>**/*.css</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${version.maven-compiler-plugin}</version>
+					<configuration>
+						<source>${version.java}</source>
+						<target>${version.java}</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>${version.exec-maven-plugin}</version>
+					<executions>
+						<execution>
+							<id>package-jar</id>
+							<phase>package</phase>
+							<goals>
+								<goal>exec</goal>
+							</goals>
+							<configuration>
+								<executable>${java.home}/../bin/javapackager</executable>
+								<arguments>
+									<argument>-createjar</argument>
+									<argument>-nocss2bin</argument>
+									<argument>-appclass</argument>
+									<argument>code.examples.javafxmaven.JavaFXAppWithMaven</argument>
+									<argument>-srcdir</argument>
+									<argument>${project.build.directory}/classes</argument>
+									<argument>-outdir</argument>
+									<argument>${project.build.directory}</argument>
+									<argument>-outfile</argument>
+									<argument>${project.artifactId}-app</argument>
+									<argument>-v</argument>
+								</arguments>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+	</build>
+
+</project>
